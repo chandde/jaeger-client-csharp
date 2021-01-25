@@ -27,8 +27,15 @@ namespace Jaeger
 
         // C# doesn't have "return type covariance" so we use the trick with the explicit interface implementation
         // and this separate property.
-        public SpanContext Context { get; private set; }
-        ISpanContext ISpan.Context => Context;
+        public SpanContext Context { get; set; }
+        ISpanContext ISpan.Context
+        {
+            get => Context;
+            set
+            {
+                Context = (SpanContext)value;
+            }
+        }
 
         public DateTime? FinishTimestampUtc { get; private set; }
 

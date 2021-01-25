@@ -27,7 +27,7 @@ namespace Jaeger.Senders.Thrift.Protocols
                 context.TraceId.Low,
                 context.TraceId.High,
                 context.SpanId,
-                oneChildOfParent ? context.ParentId : 0L,
+                context.ParentId,
                 span.OperationName,
                 (byte)context.Flags,
                 startTime,
